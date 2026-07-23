@@ -3,10 +3,1188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hallo semangat yaaaaaaaaa!!!!!!!!!!!!</title>
+    <title>🌈 Taman Anak-Anak Ceria - Happy Kids Park</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300;400;600;700&family=Baloo+2:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #87CEEB 0%, #B0E0E6 30%, #98FB98 70%, #90EE90 100%);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ===== ANIMATED BACKGROUND - CLOUDS, SUN, BALLOONS ===== */
+        .sky-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        /* Sun */
+        .sun {
+            position: absolute;
+            top: 30px;
+            right: 60px;
+            font-size: 80px;
+            animation: sunPulse 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(255, 200, 0, 0.6));
+        }
+
+        @keyframes sunPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(10deg); }
+        }
+
+        /* Clouds */
+        .cloud {
+            position: absolute;
+            font-size: 80px;
+            opacity: 0.7;
+            animation: cloudFloat linear infinite;
+            filter: drop-shadow(0 5px 15px rgba(255,255,255,0.3));
+        }
+
+        .cloud:nth-child(1) { top: 5%; font-size: 70px; animation-duration: 25s; left: -10%; }
+        .cloud:nth-child(2) { top: 12%; font-size: 55px; animation-duration: 35s; left: -10%; animation-delay: -10s; }
+        .cloud:nth-child(3) { top: 8%; font-size: 90px; animation-duration: 30s; left: -10%; animation-delay: -20s; }
+
+        @keyframes cloudFloat {
+            0% { transform: translateX(-150px); }
+            100% { transform: translateX(calc(100vw + 200px)); }
+        }
+
+        /* Balloons */
+        .balloon {
+            position: absolute;
+            font-size: 40px;
+            animation: balloonFloat linear infinite;
+            opacity: 0.8;
+        }
+
+        .balloon:nth-child(4) { left: 10%; font-size: 45px; animation-duration: 12s; animation-delay: 0s; bottom: -50px; }
+        .balloon:nth-child(5) { left: 30%; font-size: 35px; animation-duration: 15s; animation-delay: -3s; bottom: -50px; }
+        .balloon:nth-child(6) { left: 55%; font-size: 50px; animation-duration: 13s; animation-delay: -7s; bottom: -50px; }
+        .balloon:nth-child(7) { left: 75%; font-size: 38px; animation-duration: 16s; animation-delay: -5s; bottom: -50px; }
+        .balloon:nth-child(8) { left: 90%; font-size: 42px; animation-duration: 14s; animation-delay: -10s; bottom: -50px; }
+
+        @keyframes balloonFloat {
+            0% { transform: translateY(0) rotate(-5deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-110vh) rotate(5deg); opacity: 0; }
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .main-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 60px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.6em;
+            background: linear-gradient(135deg, #FF6B6B, #FFD93D, #6BCB77, #4D96FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            font-size: 1.2em;
+            -webkit-text-fill-color: initial;
+            color: initial;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9em;
+            padding: 8px 18px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: white;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            text-align: center;
+            padding: 50px 20px 40px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1));
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 50px;
+            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-emoji {
+            font-size: 90px;
+            display: block;
+            margin-bottom: 10px;
+            animation: bounceHero 2s ease-in-out infinite;
+        }
+
+        @keyframes bounceHero {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
+        }
+
+        .hero h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 3.2em;
+            background: linear-gradient(135deg, #FF6B6B, #FFD93D, #6BCB77, #4D96FF, #9B59B6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.4em;
+            color: rgba(255,255,255,0.9);
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 35px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            box-shadow: 0 5px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 35px rgba(255, 107, 107, 0.6);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #6BCB77, #4D96FF);
+            color: white;
+            box-shadow: 0 5px 25px rgba(107, 203, 119, 0.4);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 35px rgba(107, 203, 119, 0.6);
+        }
+
+        .btn-tertiary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+
+        .btn-tertiary:hover {
+            background: rgba(255,255,255,0.35);
+            transform: translateY(-3px);
+        }
+
+        /* ===== SECTION TITLE ===== */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.4em;
+            background: linear-gradient(135deg, #FF6B6B, #FFD93D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .section-title .emoji-row {
+            font-size: 2em;
+            letter-spacing: 8px;
+        }
+
+        .section-title p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.05em;
+            font-weight: 500;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            background: linear-gradient(145deg, rgba(255,255,255,0.2), rgba(255,255,255,0.08));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 40px;
+            border: 2px solid rgba(255,255,255,0.25);
+            padding: 50px 40px;
+            margin-bottom: 40px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.05em;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .about-text .highlight {
+            font-weight: 700;
+            color: #FFD93D;
+        }
+
+        .about-illustration {
+            text-align: center;
+            font-size: 8em;
+            animation: floatIllustration 4s ease-in-out infinite;
+        }
+
+        @keyframes floatIllustration {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        /* ===== FACILITIES SECTION ===== */
+        .facilities-section {
+            margin-bottom: 40px;
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .facility-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.2), rgba(255,255,255,0.08));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 30px;
+            border: 2px solid rgba(255,255,255,0.25);
+            padding: 30px 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .facility-icon {
+            font-size: 4em;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .facility-card h3 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.3em;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .facility-card p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .facility-badge {
+            display: inline-block;
+            padding: 4px 15px;
+            background: rgba(255,215,0,0.3);
+            border: 1px solid rgba(255,215,0,0.4);
+            border-radius: 20px;
+            color: #FFD93D;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* ===== GALLERY SECTION ===== */
+        .gallery-section {
+            margin-bottom: 40px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: linear-gradient(145deg, rgba(255,255,255,0.2), rgba(255,255,255,0.08));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 25px;
+            border: 2px solid rgba(255,255,255,0.2);
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .gallery-item .gallery-emoji {
+            font-size: 4.5em;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .gallery-item .gallery-label {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.1em;
+            color: white;
+            font-weight: 700;
+        }
+
+        .gallery-item:nth-child(1) { background: linear-gradient(135deg, rgba(255,107,107,0.3), rgba(255,215,0,0.2)); }
+        .gallery-item:nth-child(2) { background: linear-gradient(135deg, rgba(107,203,119,0.3), rgba(77,150,255,0.2)); }
+        .gallery-item:nth-child(3) { background: linear-gradient(135deg, rgba(155,89,182,0.3), rgba(255,105,180,0.2)); }
+        .gallery-item:nth-child(4) { background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(255,107,107,0.2)); }
+        .gallery-item:nth-child(5) { background: linear-gradient(135deg, rgba(77,150,255,0.3), rgba(107,203,119,0.2)); }
+        .gallery-item:nth-child(6) { background: linear-gradient(135deg, rgba(255,105,180,0.3), rgba(155,89,182,0.2)); }
+
+        /* ===== LOCATION SECTION ===== */
+        .location-section {
+            background: linear-gradient(145deg, rgba(255,255,255,0.2), rgba(255,255,255,0.08));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 40px;
+            border: 2px solid rgba(255,255,255,0.25);
+            padding: 50px 40px;
+            margin-bottom: 40px;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .location-info .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .location-info .info-item:hover {
+            transform: translateX(5px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .location-info .info-item .icon {
+            font-size: 2em;
+        }
+
+        .location-info .info-item .text h4 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.1em;
+            color: white;
+        }
+
+        .location-info .info-item .text p {
+            font-size: 0.9em;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .location-map-placeholder {
+            background: linear-gradient(135deg, #6BCB77, #4D96FF, #FFD93D);
+            border-radius: 25px;
+            padding: 40px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 280px;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .location-map-placeholder .map-emoji {
+            font-size: 5em;
+            margin-bottom: 10px;
+        }
+
+        .location-map-placeholder p {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-section {
+            margin-bottom: 40px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.2), rgba(255,255,255,0.08));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 25px;
+            border: 2px solid rgba(255,255,255,0.2);
+            padding: 30px 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-card .avatar {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card .stars {
+            color: #FFD93D;
+            font-size: 1.1em;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card blockquote {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.95em;
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card .name {
+            font-family: 'Fredoka One', cursive;
+            color: white;
+            font-size: 1.05em;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: linear-gradient(145deg, rgba(0,0,0,0.3), rgba(0,0,0,0.15));
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 40px 40px 0 0;
+            padding: 50px 40px 30px;
+            border-top: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.3em;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .footer-col p, .footer-col a {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95em;
+            line-height: 2;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: #FFD93D;
+        }
+
+        .footer-col .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .footer-col .social-links a {
+            font-size: 2em;
+            transition: all 0.3s;
+        }
+
+        .footer-col .social-links a:hover {
+            transform: scale(1.2) rotate(-10deg);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85em;
+        }
+
+        /* ===== POPUP OVERLAY ===== */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .popup-overlay.show {
+            display: flex;
+        }
+
+        .popup-card {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border-radius: 35px;
+            padding: 40px 35px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            border: 2px solid rgba(255,255,255,0.15);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .popup-card .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #FF6B6B;
+            transition: transform 0.3s;
+        }
+
+        .popup-card .close-popup:hover {
+            transform: rotate(90deg) scale(1.2);
+        }
+
+        .popup-card .popup-icon {
+            font-size: 5em;
+            text-align: center;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .popup-card h2 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.8em;
+            color: white;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .popup-card .popup-description {
+            color: rgba(255,255,255,0.8);
+            font-size: 1em;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .popup-card .popup-details {
+            margin-top: 15px;
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .popup-card .popup-details p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9em;
+            margin: 5px 0;
+        }
+
+        /* ===== CONFETTI EFFECT ===== */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            font-size: 24px;
+            animation: confettiFall linear forwards;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-10vh) rotate(0deg) scale(1); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg) scale(0.3); opacity: 0; }
+        }
+
+        /* ===== FLOATING ACTION BUTTON ===== */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #FF6B6B, #FFD93D);
+            border: none;
+            border-radius: 50%;
+            font-size: 28px;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 5px 25px rgba(255, 107, 107, 0.5);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .fab:hover {
+            transform: scale(1.15) rotate(180deg);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                right: 20px;
+                background: rgba(0,0,0,0.85);
+                backdrop-filter: blur(20px);
+                padding: 20px;
+                border-radius: 20px;
+                border: 1px solid rgba(255,255,255,0.2);
+                min-width: 200px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .about-grid, .location-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Kerja keraslah sampai tetangga mikir kamu miara tuyul</h1>
-    <img src="istockphoto-824860820-612x612.jpg" alt="Gambar" width="500">
+
+    <!-- ===== SKY BACKGROUND ANIMATIONS ===== -->
+    <div class="sky-bg" id="skyBg">
+        <div class="sun">☀️</div>
+        <div class="cloud">☁️</div>
+        <div class="cloud">☁️</div>
+        <div class="cloud">⛅</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+    </div>
+
+    <!-- ===== FLOATING ACTION BUTTON ===== -->
+    <button class="fab" onclick="triggerCelebration()" title="Klik untuk kejutan!">🎉</button>
+
+    <!-- ===== NAVBAR ===== -->
+    <div class="main-wrapper">
+        <nav class="navbar" id="navbar">
+            <div class="logo">
+                <span>🌳</span> Taman Ceria
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMenu()">🏠 Home</a></li>
+                <li><a href="#about" onclick="closeMenu()">📖 Tentang</a></li>
+                <li><a href="#facilities" onclick="closeMenu()">🎡 Fasilitas</a></li>
+                <li><a href="#gallery" onclick="closeMenu()">🖼️ Galeri</a></li>
+                <li><a href="#location" onclick="closeMenu()">📍 Lokasi</a></li>
+            </ul>
+        </nav>
+
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <span class="hero-emoji">🌈</span>
+                <h1>Selamat Datang di Taman Ceria! 🎠</h1>
+                <p>Tempat bermain paling seru dan menyenangkan untuk anak-anak! 🌟</p>
+                <div class="hero-buttons">
+                    <a href="#facilities" class="btn btn-primary">🎢 Lihat Fasilitas</a>
+                    <button onclick="triggerCelebration()" class="btn btn-secondary">🎉 Party Time!</button>
+                    <a href="#location" class="btn btn-tertiary">📍 Lokasi Kami</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TENTANG SECTION ===== -->
+        <section class="about-section" id="about">
+            <div class="section-title">
+                <h2>📖 Tentang Taman Kami</h2>
+                <div class="emoji-row">✨ 🎈 ✨</div>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        <span class="highlight">Taman Ceria</span> adalah wahana bermain outoor & indoor terbesar untuk anak-anak usia 1–12 tahun! Kami menyediakan berbagai macam permainan interaktif yang aman, bersih, dan mengedukasi.
+                    </p>
+                    <p>
+                        Diresmikan sejak tahun 2020, tempat ini dirancang khusus agar si kecil bisa mengeksplorasi imajinasi mereka sambil bersosialisasi dengan teman-teman baru.
+                    </p>
+                </div>
+                <div class="about-illustration">
+                    🏰
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FASILITAS SECTION ===== -->
+        <section class="facilities-section" id="facilities">
+            <div class="section-title">
+                <h2>🎡 Fasilitas & Permainan</h2>
+                <p>Klik kartu fasilitas untuk melihat detail selengkapnya!</p>
+                <div class="emoji-row">🎠 🎢 🎪</div>
+            </div>
+            <div class="facilities-grid" id="facilitiesGrid">
+                <!-- Diisi via JavaScript -->
+            </div>
+        </section>
+
+        <!-- ===== GALERI SECTION ===== -->
+        <section class="gallery-section" id="gallery">
+            <div class="section-title">
+                <h2>🖼️ Galeri Foto</h2>
+                <p>Keceriaan si kecil bersama keluarga!</p>
+                <div class="emoji-row">📸 🎨 🎁</div>
+            </div>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Diisi via JavaScript -->
+            </div>
+        </section>
+
+        <!-- ===== LOKASI SECTION ===== -->
+        <section class="location-section" id="location">
+            <div class="section-title">
+                <h2>📍 Jam Buka & Lokasi</h2>
+                <div class="emoji-row">🗺️ ⏰ 🚗</div>
+            </div>
+            <div class="location-grid">
+                <div class="location-info">
+                    <div class="info-item">
+                        <span class="icon">⏰</span>
+                        <div class="text">
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Minggu: 08:00 - 18:00 WIB</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">📍</span>
+                        <div class="text">
+                            <h4>Alamat Utama</h4>
+                            <p>Jl. Pelangi Ceria No. 123, Kota Bahagia</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">📞</span>
+                        <div class="text">
+                            <h4>Hubungi Kami</h4>
+                            <p>+62 812-3456-7890 (WhatsApp)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="location-map-placeholder">
+                    <div class="map-emoji">🗺️</div>
+                    <p>Peta Interaktif Lokasi Taman Ceria</p>
+                    <p style="font-size: 0.85em; opacity: 0.8; margin-top: 5px;">Sangat Dekat Dari Pusat Kota!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TESTIMONI SECTION ===== -->
+        <section class="testimonials-section">
+            <div class="section-title">
+                <h2>💬 Kata Orang Tua</h2>
+                <p>Apa kata mereka yang sudah berkunjung?</p>
+                <div class="emoji-row">❤️ 👨‍👩‍👧‍👦 ⭐</div>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="avatar">👩‍🦰</div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <blockquote>"Anak-anak senang banget bermain di sini! Fasilitasnya lengkap dan petugasnya sangat ramah."</blockquote>
+                    <div class="name">Ibu Siska</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="avatar">👨‍🦱</div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <blockquote>"Tempatnya bersih, aman, dan cocok banget untuk liburan keluarga di akhir pekan."</blockquote>
+                    <div class="name">Pak Budi</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="avatar">👩</div>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <blockquote>"Spot foto Instagramable banyak banget! Es krim gratisnya juga enak."</blockquote>
+                    <div class="name">Ibu Maya</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>🌈 Taman Ceria</h4>
+                    <p>Tempat terbaik untuk menciptakan momen bahagia buah hati Anda.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>🔗 Link Cepat</h4>
+                    <a href="#home">Home</a>
+                    <a href="#about">Tentang Kami</a>
+                    <a href="#facilities">Fasilitas</a>
+                    <a href="#location">Lokasi</a>
+                </div>
+                <div class="footer-col">
+                    <h4>📱 Media Sosial</h4>
+                    <div class="social-links">
+                        <a href="#">📷</a>
+                        <a href="#">📘</a>
+                        <a href="#">🎵</a>
+                        <a href="#">🎬</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Taman Anak-Anak Ceria. Dibuat dengan ❤️ untuk Si Kecil.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ===== POPUP DETAIL ===== -->
+    <div class="popup-overlay" id="popupOverlay" onclick="closePopup(event)">
+        <div class="popup-card" onclick="event.stopPropagation()">
+            <button class="close-popup" onclick="closePopupDirect()">&times;</button>
+            <span class="popup-icon" id="popupIcon">🎈</span>
+            <h2 id="popupTitle">Judul Detail</h2>
+            <p class="popup-description" id="popupDesc">Deskripsi detail fasilitas...</p>
+            <div class="popup-details">
+                <p><strong>🎯 Rekomendasi Usia:</strong> <span id="popupAge">All Ages</span></p>
+                <p><strong>🛡️ Tingkat Keamanan:</strong> <span id="popupSafety">Sangat Aman</span></p>
+                <p><strong>⭐ Tingkat Keseruan:</strong> <span id="popupFun">100%</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CONFETTI CONTAINER ===== -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <script>
+        // ============================================================
+        // DATA FASILITAS & GALERI (SUDAH DIPERBAIKI SINTAKSNYA)
+        // ============================================================
+
+        const facilitiesData = [
+            {
+                icon: '🎠',
+                title: 'Komidi Putar',
+                desc: 'Komidi putar klasik yang dihiasi musik riang dan lampu warna-warni.',
+                badge: 'Favorit Anak',
+                age: '3 - 10 Tahun',
+                safety: 'Super Aman & Didampingi',
+                fun: '100%'
+            },
+            {
+                icon: '🎢',
+                title: 'Perosotan Pelangi',
+                desc: 'Perosotan raksasa dengan jalur penuh warna yang mendarat di kolam busa aman.',
+                badge: 'Sangat Populer',
+                age: '4 - 12 Tahun',
+                safety: 'Busa Pelindung Tinggi',
+                fun: '99%'
+            },
+            {
+                icon: '🏰',
+                title: 'Istana Balon',
+                desc: 'Istana tiup empuk untuk meloncat gembira seharian tanpa takut terjatuh.',
+                badge: 'Paling Ramai',
+                age: '2 - 8 Tahun',
+                safety: 'Lantai Dinding Empuk',
+                fun: '98%'
+            },
+            {
+                icon: '🏎️',
+                title: 'Mobil-Mobilan',
+                desc: 'Arena balap mini aman untuk melatih ketangkasan mengemudi si kecil.',
+                badge: 'Seru Banget',
+                age: '5 - 12 Tahun',
+                safety: 'Sabuk Pengaman & Helm',
+                fun: '95%'
+            },
+            {
+                icon: '🧩',
+                title: 'Area Kreatif & Edukasi',
+                desc: 'Zona mewarnai, menyusun puzzle, dan bermain pasir kinetik yang mengasah otak.',
+                badge: 'Edukatif',
+                age: '1 - 6 Tahun',
+                safety: 'Bahan Non-Toxic',
+                fun: '90%'
+            },
+            {
+                icon: '🍦',
+                title: 'Pojok Kuliner & Es Krim',
+                desc: 'Kantin ramah anak menyediakan makanan sehat, camilan, dan es krim buah lezat.',
+                badge: 'Delicious!',
+                age: 'Semua Usia',
+                safety: 'Bahan Organik Bersih',
+                fun: '100%'
+            }
+        ];
+
+        const galleryData = [
+            { emoji: '🎪', label: 'Tenda Pertunjukan' },
+            { emoji: '🎨', label: 'Lomba Mewarnai' },
+            { emoji: '🍿', label: 'Camilan Sehat' },
+            { emoji: '🎭', label: 'Panggung Boneka' },
+            { emoji: '🚂', label: 'Kereta Mini' },
+            { emoji: '🎁', label: 'Hadiah Kejutan' }
+        ];
+
+        // ============================================================
+        // RENDER DATA KE HTML
+        // ============================================================
+
+        function renderFacilities() {
+            const container = document.getElementById('facilitiesGrid');
+            container.innerHTML = facilitiesData.map((item, index) => `
+                <div class="facility-card" onclick="openPopup(${index})">
+                    <span class="facility-icon">${item.icon}</span>
+                    <h3>${item.title}</h3>
+                    <p>${item.desc}</p>
+                    <span class="facility-badge">${item.badge}</span>
+                </div>
+            `).join('');
+        }
+
+        function renderGallery() {
+            const container = document.getElementById('galleryGrid');
+            container.innerHTML = galleryData.map(item => `
+                <div class="gallery-item" onclick="triggerCelebration()">
+                    <span class="gallery-emoji">${item.emoji}</span>
+                    <span class="gallery-label">${item.label}</span>
+                </div>
+            `).join('');
+        }
+
+        // ============================================================
+        // POPUP MODAL LOGIC
+        // ============================================================
+
+        function openPopup(index) {
+            const data = facilitiesData[index];
+            document.getElementById('popupIcon').innerText = data.icon;
+            document.getElementById('popupTitle').innerText = data.title;
+            document.getElementById('popupDesc').innerText = data.desc;
+            document.getElementById('popupAge').innerText = data.age;
+            document.getElementById('popupSafety').innerText = data.safety;
+            document.getElementById('popupFun').innerText = data.fun;
+
+            document.getElementById('popupOverlay').classList.add('show');
+            triggerCelebration();
+        }
+
+        function closePopup(event) {
+            if (event.target.id === 'popupOverlay') {
+                document.getElementById('popupOverlay').classList.remove('show');
+            }
+        }
+
+        function closePopupDirect() {
+            document.getElementById('popupOverlay').classList.remove('show');
+        }
+
+        // ============================================================
+        // NAVBAR MOBILE TOGGLE
+        // ============================================================
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        function closeMenu() {
+            document.getElementById('navLinks').classList.remove('active');
+        }
+
+        // ============================================================
+        // EFEK CONFETTI (SELEBRASI)
+        // ============================================================
+
+        function triggerCelebration() {
+            const confettiContainer = document.getElementById('confettiContainer');
+            const emojis = ['🎉', '✨', '🎈', '⭐', '🎊', '🌸', '🍬'];
+
+            for (let i = 0; i < 20; i++) {
+                const piece = document.createElement('div');
+                piece.className = 'confetti-piece';
+                piece.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                piece.style.left = Math.random() * 100 + 'vw';
+                piece.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+
+                confettiContainer.appendChild(piece);
+
+                setTimeout(() => {
+                    piece.remove();
+                }, 3500);
+            }
+        }
+
+        // ============================================================
+        // INISIALISASI HALAMAN
+        // ============================================================
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderFacilities();
+            renderGallery();
+        });
+    </script>
 </body>
 </html>
